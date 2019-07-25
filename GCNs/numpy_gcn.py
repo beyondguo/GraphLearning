@@ -53,3 +53,16 @@ def cal_A_hat(A):
     A_hat = np.dot(np.dot(D_inv_sqrt,A_),D_inv_sqrt) 
     return A_hat
 
+# ============ Compute node features：================
+# 按照作者的说法，无监督的gcn通过随机参数得到的embedding都可以得到很好的效果
+def relu(x):
+    return (np.abs(x)+x)/2
+
+units = 32
+W1 = np.random.uniform(np.sqrt(6/(X.shape[1]+units)),size=(X.shape[1],units)) # (172050, 32)
+M1 = np.dot(A_hat,X)
+# 由于W不是稀疏矩阵，所以下面的矩阵乘法无法进行压缩，会极度消耗内存！！
+# 可以考虑的方法是循环把node embedding给存下来
+Z1 = np.dot(M1,W1)
+H1 = relu(Z1)
+# H1即为通过一层GCN得到的embedding，其中embedding的维度为32.
