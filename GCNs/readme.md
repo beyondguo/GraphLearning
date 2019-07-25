@@ -3,4 +3,4 @@
 
 ## GCN参考教程，代码：
 - keras-gcn：https://github.com/tkipf/keras-gcn
-- 建议教程，可视化，有监督无监督版本：https://github.com/dbusbridge/gcn_tutorial
+- 简易教程，可视化，有监督无监督版本：https://github.com/dbusbridge/gcn_tutorial
